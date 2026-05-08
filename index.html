@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Sumbong | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Brgy. Official Login</h2>
+        <div id="messageBox" class="message"></div>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        
+        <button onclick="attemptLogin()">Login</button>
+    </div>
+
+    <script>
+        function attemptLogin() {
+            // Get the values typed by the user
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+            let msgBox = document.getElementById("messageBox");
+
+            // Validation 1: Check for empty fields
+            if (user === "" || pass === "") {
+                msgBox.style.color = "red";
+                msgBox.innerHTML = "Error: Please fill in all fields.";
+                return; // Stop the function here
+            }
+
+            // Validation 2: Check for wrong credentials (Hardcoded for this prototype)
+            if (user === "admin" && pass === "12345") {
+                msgBox.style.color = "green";
+                msgBox.innerHTML = "Login Successful! Redirecting...";
+                
+                // Redirect to dashboard after 1 second
+                setTimeout(() => {
+                    window.location.href = "dashboard.html";
+                }, 1000);
+            } else {
+                msgBox.style.color = "red";
+                msgBox.innerHTML = "Error: Invalid username or password.";
+            }
+        }
+    </script>
+</body>
+</html>
